@@ -36,10 +36,11 @@
         </columns>
       </TableView>
       <ComboBox fx:id="filterChoiceBox" layoutX="337.0" layoutY="406.0" prefWidth="150.0" />
-      <TextField layoutX="517.0" layoutY="406.0" />
+      <TextField fx:id="maxPriceField" layoutX="517.0" layoutY="406.0" />
       <Button layoutX="693.0" layoutY="406.0" mnemonicParsing="false" onAction="#filter" text="Filter" />
       <Button layoutX="767.0" layoutY="406.0" mnemonicParsing="false" onAction="#resetFilter" text="Reset Filter" />
       <Button layoutX="438.0" layoutY="481.0" mnemonicParsing="false" onAction="#findBestValue" prefHeight="61.0" prefWidth="98.0" text="Find Best Value" />
       <Label fx:id="bestValuePackageLabel" layoutX="558.0" layoutY="493.0" prefHeight="38.0" prefWidth="128.0" text="Best vallue Pacakge Info" />
+      <Label layoutX="517.0" layoutY="441.0" prefHeight="18.0" prefWidth="150.0" text="Enter a maximum price" />
    </children>
 </AnchorPane>

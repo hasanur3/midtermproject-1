@@ -41,6 +41,8 @@ public class HelloController {
     private DatePicker datePickerField;
     @FXML
     private TableView<DataPackage> packageTableView;
+    @FXML
+    private TextField maxPriceField;
 
     @FXML
     void initialize() {
@@ -48,6 +50,8 @@ public class HelloController {
         availibilityComboBox.getItems().addAll( "App Only",
                 "Recharge Only",
                 "App and Recharge only");
+
+        filterChoiceBox.getItems().addAll("3 days", "7 days", "15 days", "30 days", "Unlimited");
 
         packageNameTableCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         dataAmountTableCol.setCellValueFactory(new PropertyValueFactory<>("dataAmount"));
@@ -70,6 +74,19 @@ public class HelloController {
             return;
         }
 
+        if (validityChoiceBox.getValue().isBlank()){
+            messageLabel.setText("Validity cannot be blank");
+            return;
+        }
+        if (priceField.getText().isBlank()){
+            messageLabel.setText("Price cannot be blank");
+            return;
+        }
+        if (availibilityComboBox.getValue().isBlank()){
+            messageLabel.setText("Availability cannot be blank");
+            return;
+        }
+
         String name = pacakageNameField.getText();
         String dataAmount = dataAmountField.getText();
         String validity = validityChoiceBox.getValue();
@@ -83,6 +100,9 @@ public class HelloController {
 
     @FXML
     public void filter(ActionEvent actionEvent) {
+        if (filterChoiceBox.getValue().equals(validityChoiceBox.getValue())){
+
+        }
 
     }
 
