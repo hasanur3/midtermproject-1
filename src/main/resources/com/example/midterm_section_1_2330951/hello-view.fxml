@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="599.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.midterm_section_1_2330951.HelloController">
+   <children>
+      <TextField fx:id="pacakageNameField" layoutX="129.0" layoutY="46.0" />
+      <TextField fx:id="dataAmountField" layoutX="129.0" layoutY="97.0" />
+      <Label layoutX="30.0" layoutY="50.0" text="package name:" />
+      <Label layoutX="30.0" layoutY="101.0" text="Data Amount" />
+      <Label layoutX="34.0" layoutY="151.0" text="Validity" />
+      <TextField fx:id="priceField" layoutX="129.0" layoutY="206.0" />
+      <Label layoutX="34.0" layoutY="201.0" text="price" />
+      <Label layoutX="33.0" layoutY="260.0" text="Availibility" />
+      <Label layoutX="32.0" layoutY="329.0" text="Offer Ends" />
+      <ComboBox fx:id="validityChoiceBox" layoutX="129.0" layoutY="147.0" prefWidth="150.0" />
+      <ComboBox fx:id="availibilityComboBox" layoutX="129.0" layoutY="256.0" prefWidth="150.0" />
+      <DatePicker fx:id="datePickerField" layoutX="116.0" layoutY="325.0" />
+      <Button layoutX="155.0" layoutY="380.0" mnemonicParsing="false" onAction="#createPackageButton" text="Create Package" />
+      <Label fx:id="messageLabel" layoutX="47.0" layoutY="477.0" prefHeight="70.0" prefWidth="338.0" text="Error/Success Message:" />
+      <TableView fx:id="packageTableView" layoutX="297.0" layoutY="47.0" prefHeight="338.0" prefWidth="608.0">
+        <columns>
+          <TableColumn fx:id="packageNameTableCol" prefWidth="103.20001220703125" text="Package" />
+          <TableColumn fx:id="dataAmountTableCol" prefWidth="127.20001220703125" text="Data Amount" />
+            <TableColumn fx:id="validityTableCol" prefWidth="88.79998779296875" text="Validity" />
+            <TableColumn fx:id="priceTableCol" prefWidth="76.800048828125" text="Price" />
+            <TableColumn fx:id="availibilityTableCol" prefWidth="91.99993896484375" text="Availibility" />
+            <TableColumn fx:id="offerEndsTableCol" prefWidth="124.7999267578125" text="Offer Ends" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="filterChoiceBox" layoutX="337.0" layoutY="406.0" prefWidth="150.0" />
+      <TextField layoutX="517.0" layoutY="406.0" />
+      <Button layoutX="693.0" layoutY="406.0" mnemonicParsing="false" onAction="#filter" text="Filter" />
+      <Button layoutX="767.0" layoutY="406.0" mnemonicParsing="false" onAction="#resetFilter" text="Reset Filter" />
+      <Button layoutX="438.0" layoutY="481.0" mnemonicParsing="false" onAction="#findBestValue" prefHeight="61.0" prefWidth="98.0" text="Find Best Value" />
+      <Label fx:id="bestValuePackageLabel" layoutX="558.0" layoutY="493.0" prefHeight="38.0" prefWidth="128.0" text="Best vallue Pacakge Info" />
+   </children>
+</AnchorPane>
