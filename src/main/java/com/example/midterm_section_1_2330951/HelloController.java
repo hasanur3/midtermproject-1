@@ -1,11 +1,15 @@
 package com.example.midterm_section_1_2330951;
 
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import jdk.jfr.DataAmount;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class HelloController {
 
@@ -43,6 +47,9 @@ public class HelloController {
     private TableView<DataPackage> packageTableView;
     @FXML
     private TextField maxPriceField;
+
+    private ArrayList<DataPackage> dataArrayList = new ArrayList<>();
+
 
     @FXML
     void initialize() {
@@ -94,15 +101,22 @@ public class HelloController {
         String availibility = availibilityComboBox.getValue();
         LocalDate offerEnds = datePickerField.getValue();
 
-        DataPackage d = new DataPackage(name, Float.parseFloat(dataAmount),validity,Double.parseDouble(price),availibility,offerEnds);
-        packageTableView.getItems().add(d);
+        for(DataPackage dataName: dataArrayList){
+            if (dataName.getName().equals(name)){
+                showAlert("Package name error." ,"Data package name must be unique.");
+                return;
+            }
+        }
+
+        DataPackage d = new DataPackage(name,Float.parseFloat(dataAmount),validity,Double.parseDouble(price),availibility,offerEnds);
+        dataArrayList.add(d);
+        packageTableView.getItems().setAll(dataArrayList);
+
     }
 
     @FXML
     public void filter(ActionEvent actionEvent) {
-        if (filterChoiceBox.getValue().equals(validityChoiceBox.getValue())){
 
-        }
 
     }
 
@@ -112,5 +126,12 @@ public class HelloController {
 
     @FXML
     public void findBestValue(ActionEvent actionEvent) {
+    }
+
+    public void showAlert(String title, String content){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
