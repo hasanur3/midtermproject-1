@@ -116,16 +116,48 @@ public class HelloController {
 
     @FXML
     public void filter(ActionEvent actionEvent) {
-
-
+        String validityFilter = filterChoiceBox.getValue();
+        ArrayList<DataPackage> filteredList = new ArrayList<>();
+        for (DataPackage val : dataArrayList){
+            if (val.getValidity().equals(validityFilter) && val.getPrice() <=  Double.parseDouble(maxPriceField.getText())){
+                filteredList.add(val);
+            }
+        }
+        packageTableView.getItems().setAll(filteredList);
     }
 
     @FXML
     public void resetFilter(ActionEvent actionEvent) {
+        packageTableView.getItems().setAll(dataArrayList);
     }
 
     @FXML
     public void findBestValue(ActionEvent actionEvent) {
+        if (dataArrayList.isEmpty()) {
+            messageLabel.setText("No package is available");
+            return;
+        }
+
+        DataPackage bestPackage = null;
+        double lowestPricePerGb = Double.MAX_VALUE;
+
+        for(DataPackage compare : dataArrayList){
+            if (compare.getDataAmount() > 0) {
+                double pricePerGb = compare.getPrice() / (double) compare.getDataAmount();
+
+                if (pricePerGb < lowestPricePerGb){
+                    lowestPricePerGb = pricePerGb;
+                    bestPackage = compare;
+                }
+            }
+        }
+
+        if (bestPackage != null) {
+            bestValuePackageLabel.setText("Best Value: " + bestPackage.getDataAmount() + "GB for " +
+                    bestPackage.getPrice() + " (" + String.format("%.2f", lowestPricePerGb) + " per GB)");
+        } else {
+            bestValuePackageLabel.setText("No suitable package found.");
+        }
     }
 
     public void showAlert(String title, String content){
